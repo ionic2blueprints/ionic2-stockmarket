@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Stocks</ion-title>
+    <ion-buttons end>
+      <button (click)="searchQuote()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="page1">
+  <ion-list>
+    <stock (click)="openDetail(quote)" *ngFor="let quote of quoteList; let i = index" [run]="run" sliding="true" [info]="quote" (delete)="deleteItem(i, quote.symbol)">
+    </stock>
+  </ion-list>
+</ion-content>

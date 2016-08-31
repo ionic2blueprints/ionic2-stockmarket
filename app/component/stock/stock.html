@@ -1,0 +1,25 @@
+<ion-item-sliding>
+  <a ion-item text-wrap class="stockcmp">
+      <ion-row>
+        <h3>{{info.symbol}}</h3>
+      </ion-row>
+      <ion-row center width-25>
+        <p>{{info.name}}</p>
+      </ion-row>
+      
+      <ion-spinner item-left *ngIf="loading"></ion-spinner>
+      <span item-right *ngIf="!loading">
+        <span>{{data.LastTradePriceOnly | numberString}}</span>
+        <ion-note class="price" [ngClass]="percentageSign(data.Change)">{{data.Change | numberString}}%</ion-note>
+        <ion-icon *ngIf="!down" name="arrow-up"></ion-icon>
+        <ion-icon *ngIf="down" name="arrow-down"></ion-icon>
+      </span>
+  </a>
+
+  <ion-item-options *ngIf="sliding">
+        <button primary (click)="deleteItem()">
+          <ion-icon name="delete"></ion-icon>
+          Delete
+        </button>
+  </ion-item-options>
+</ion-item-sliding>

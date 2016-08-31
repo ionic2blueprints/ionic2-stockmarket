@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Stock Detail</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="detail">
+    <ion-card>
+        <ion-list>
+            <stock [info]="quote" sliding="false"></stock>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card>
+        <ion-item>Historical Data</ion-item>
+       <ion-list>
+        <ion-item>
+            <ion-label>Select No. of Months of Data</ion-label>
+            <ion-select [(ngModel)]="month">
+                <ion-option value=1>1 Month</ion-option>
+                <ion-option value=3>3 Month</ion-option>
+                <ion-option value=6>6 Month</ion-option>
+                <ion-option value=12>12 Month</ion-option>
+            </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-item>
+            <button (click)="getChartData()">Update Chart</button>
+        </ion-item>
+        <ion-item>
+            <ion-label class="ct-series-a"><hr/>Low</ion-label>
+            <ion-label class="ct-series-b"><hr/> Close</ion-label>
+        </ion-item>
+        <stock-chart class="ct-perfect-fourth" [data]="data"></stock-chart>
+    </ion-card>
+    <stock-detail [symbol]="quote.symbol"></stock-detail>    
+    <ion-card text-wrap>
+        <ion-item>
+            <ion-label stacked>Enter Notes</ion-label>
+            <ion-input type="text" #newNote></ion-input>
+        </ion-item>
+        <div padding>
+            <button full (click)="addNote(newNote)">Add Note</button>
+        </div>
+        <ion-item *ngFor="let note of notes;let i = index;">
+            {{note.value}}
+            <button item-right danger (click)="deleteNote(note.rowid, i)">Delete</button>
+        </ion-item>
+    </ion-card>
+        
+</ion-content>

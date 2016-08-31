@@ -1,0 +1,21 @@
+.stockcmp {
+    .number {
+      padding:10px 20px;  
+      text-align: center;
+      min-width: 120px;
+      max-width:120px;
+      border-radius:3px;
+    };
+    
+    .percentage_pos {
+        @extend .number;
+        background: mediumseagreen;
+        color:white;
+    };
+    
+    .percentage_neg {
+       @extend .number;
+       background: indianred;
+       color:white; 
+    }
+}

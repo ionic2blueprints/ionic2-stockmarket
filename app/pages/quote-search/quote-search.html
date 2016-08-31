@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar primary>
+        <ion-title>Quote Search</ion-title>
+        <ion-buttons end>
+            <button (click)="close()"><ion-icon name="close"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar [ngFormControl]="searchbar">
+    </ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let quote of quoteList">
+            <ion-row>
+              <h3>{{quote.symbol}}</h3>
+            </ion-row>
+            <ion-row center width-25>
+              <p>{{quote.name}}</p>
+            </ion-row>
+            
+            <button item-right danger (click)="watch(quote)">Watch</button>
+        </ion-item>
+    </ion-list>
+</ion-content>
